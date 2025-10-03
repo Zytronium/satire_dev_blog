@@ -8,23 +8,23 @@
     --font-satoshi: "Satoshi", var(--font-geist-sans), sans-serif;
 
     /* Light theme */
-    --background: hsl(240, 32%, 88%);       /* very light bluish background */
-    --foreground: hsl(250 30% 20%);       /* deep purple-blue text */
+    --background: hsl(240, 32%, 88%);
+    --foreground: hsl(250 30% 20%);
     --card: hsl(0 0% 100%);
     --card-foreground: hsl(250 30% 20%);
     --popover: hsl(0 0% 100%);
     --popover-foreground: hsl(250 30% 20%);
 
-    --primary: hsl(250 60% 35%);          /* main purple-blue */
+    --primary: hsl(250 60% 35%);
     --primary-foreground: hsl(0 0% 100%);
 
-    --secondary: hsl(230 40% 92%);        /* pale bluish */
+    --secondary: hsl(230 40% 92%);
     --secondary-foreground: hsl(250 40% 25%);
 
     --muted: hsl(230 40% 92%);
     --muted-foreground: hsl(250 20% 50%);
 
-    --accent: hsl(180 70% 40%);           /* teal accent */
+    --accent: hsl(180 70% 40%);
     --accent-foreground: hsl(0 0% 100%);
 
     --destructive: hsl(0 70% 45%);
@@ -36,10 +36,9 @@
 
     --radius: 0.5rem;
 
-    /* Charts adapted */
-    --chart-1: hsl(250 60% 50%); /* purple */
+    --chart-1: hsl(250 60% 50%);   /* purple */
     --chart-2: hsl(211, 70%, 45%); /* blue */
-    --chart-3: hsl(180 70% 40%); /* teal */
+    --chart-3: hsl(180 70% 40%);   /* teal */
     --chart-4: hsl(290, 54%, 51%); /* magenta */
     --chart-5: hsl(155, 72%, 46%); /* minty-green */
 }
@@ -126,6 +125,10 @@
     .chart-3 { color: hsl(var(--chart-3)); }
     .chart-4 { color: hsl(var(--chart-4)); }
     .chart-5 { color: hsl(var(--chart-5)); }
+
+    .link {
+        @apply text-purple-400 hover:underline visited:text-fuchsia-600;
+    }
 }
 
 /* ---------- Base global styles ---------- */
