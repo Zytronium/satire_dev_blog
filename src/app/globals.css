@@ -1,26 +1,150 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
+@custom-variant dark (&:is(.dark *));
+/* ---------- Design tokens (H S L triplets for use with hsl(var(--...))) ---------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --font-geist-sans: "Electrolize", sans-serif;
+    --font-satoshi: "Satoshi", var(--font-geist-sans), sans-serif;
+
+    /* Light theme */
+    --background: hsl(240, 32%, 88%);       /* very light bluish background */
+    --foreground: hsl(250 30% 20%);       /* deep purple-blue text */
+    --card: hsl(0 0% 100%);
+    --card-foreground: hsl(250 30% 20%);
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(250 30% 20%);
+
+    --primary: hsl(250 60% 35%);          /* main purple-blue */
+    --primary-foreground: hsl(0 0% 100%);
+
+    --secondary: hsl(230 40% 92%);        /* pale bluish */
+    --secondary-foreground: hsl(250 40% 25%);
+
+    --muted: hsl(230 40% 92%);
+    --muted-foreground: hsl(250 20% 50%);
+
+    --accent: hsl(180 70% 40%);           /* teal accent */
+    --accent-foreground: hsl(0 0% 100%);
+
+    --destructive: hsl(0 70% 45%);
+    --destructive-foreground: hsl(0 0% 100%);
+
+    --border: hsl(230 30% 85%);
+    --input: hsl(230 30% 85%);
+    --ring: hsl(250 60% 35%);
+
+    --radius: 0.5rem;
+
+    /* Charts adapted */
+    --chart-1: hsl(250 60% 50%); /* purple */
+    --chart-2: hsl(211, 70%, 45%); /* blue */
+    --chart-3: hsl(180 70% 40%); /* teal */
+    --chart-4: hsl(290, 54%, 51%); /* magenta */
+    --chart-5: hsl(155, 72%, 46%); /* minty-green */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Dark theme overrides */
+.dark {
+    --background: hsl(250 35% 12%);
+    --foreground: hsl(0 0% 98%);
+
+    --card: hsl(250 35% 15%);
+    --card-foreground: hsl(0 0% 98%);
+
+    --popover: hsl(250 35% 15%);
+    --popover-foreground: hsl(0 0% 98%);
+
+    --primary: hsl(250 70% 65%);
+    --primary-foreground: hsl(250 35% 15%);
+
+    --secondary: hsl(240 30% 25%);
+    --secondary-foreground: hsl(0 0% 98%);
+
+    --muted: hsl(240 30% 25%);
+    --muted-foreground: hsl(250 30% 70%);
+
+    --accent: hsl(180 70% 40%);
+    --accent-foreground: hsl(0 0% 100%);
+
+    --destructive: hsl(0 60% 40%);
+    --destructive-foreground: hsl(0 0% 98%);
+
+    --border: hsl(240 25% 25%);
+    --input: hsl(240 25% 25%);
+    --ring: hsl(250 70% 65%);
+
+    --chart-1: hsl(250, 84%, 58%); /* purple */
+    --chart-2: hsl(211, 73%, 51%); /* blue */
+    --chart-3: hsl(180, 69%, 49%); /* teal */
+    --chart-4: hsl(290, 65%, 55%); /* magenta */
+    --chart-5: hsl(155, 70%, 50%); /* minty-green */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
+
+/* ---------- Utility mappings that use the CSS-first tokens ---------- */
+@layer utilities{
+    /* Background / foreground utilities */
+    .bg-background { background-color: hsl(var(--background)); }
+    .text-foreground { color: hsl(var(--foreground)); }
+
+    .bg-card { background-color: hsl(var(--card)); }
+    .text-card-foreground { color: hsl(var(--card-foreground)); }
+
+    .bg-popover { background-color: hsl(var(--popover)); }
+    .text-popover-foreground { color: hsl(var(--popover-foreground)); }
+
+    .bg-primary { background-color: hsl(var(--primary)); }
+    .text-primary-foreground { color: hsl(var(--primary-foreground)); }
+
+    .bg-secondary { background-color: hsl(var(--secondary)); }
+    .text-secondary-foreground { color: hsl(var(--secondary-foreground)); }
+
+    .bg-muted { background-color: hsl(var(--muted)); }
+    .text-muted-foreground { color: hsl(var(--muted-foreground)); }
+
+    .bg-accent { background-color: hsl(var(--accent)); }
+    .text-accent-foreground { color: hsl(var(--accent-foreground)); }
+
+    .bg-destructive { background-color: hsl(var(--destructive)); }
+    .text-destructive-foreground { color: hsl(var(--destructive-foreground)); }
+
+    /* Small utility wrappers */
+    .border-border { border-color: hsl(var(--border)); }
+    .bg-input { background-color: hsl(var(--input)); }
+    .rounded-radius { border-radius: var(--radius); }
+
+    /* ring helper (simple) */
+    .ring-token {
+        box-shadow: 0 0 0 3px color-mix(in hsl, hsl(var(--ring)) 16%, transparent);
+    }
+
+    /* chart color helpers */
+    .chart-1 { color: hsl(var(--chart-1)); }
+    .chart-2 { color: hsl(var(--chart-2)); }
+    .chart-3 { color: hsl(var(--chart-3)); }
+    .chart-4 { color: hsl(var(--chart-4)); }
+    .chart-5 { color: hsl(var(--chart-5)); }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------- Base global styles ---------- */
+@layer base{
+    /* apply the border token to all default borders (same effect as original) */
+    * { border-color: hsl(var(--border)); }
+
+    html, body {
+        @apply transition-colors duration-500;
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+        font-family: var(--font-satoshi);
+    }
+}
+
+@font-face {
+    font-family: "Electrolize";
+    src: url("/fonts/Electrolize-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
