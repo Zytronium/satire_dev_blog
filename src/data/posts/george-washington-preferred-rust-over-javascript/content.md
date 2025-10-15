@@ -282,7 +282,7 @@ Rust teaches us what Washington already knew:
 - A strong nation, like a strong program, avoids data races.
 - Unchecked promises lead to chaos.
 - If your TypeScript build fails, blame the king of England.
-- The queen of England's death was partially caused by the king's faulty TypeScript code.
+- The queen of England's death was partially caused by the King Charles' faulty TypeScript code.
 
 So next time your JavaScript throws at runtime, remember:  
 **George Washington would have written it in Rust.**

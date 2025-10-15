@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import Link from "next/link";
 import { Post } from "@/components/PostGrid";
+import Container from "@/components/Container";
 
 export default function Page() {
   const { slug } = useParams(); // changed from id → slug
@@ -43,14 +44,16 @@ export default function Page() {
 
   if (loading)
     return (
-      <div className="max-w-3xl mx-auto px-6 py-16 text-center text-muted-foreground">
+      <div
+        className="max-w-3xl mx-auto px-6 py-16 text-center text-muted-foreground">
         <p>Loading post...</p>
       </div>
     );
 
   if (!post) {
     return (
-      <div className="max-w-3xl mx-auto px-6 py-16 text-center text-muted-foreground">
+      <div
+        className="max-w-3xl mx-auto px-6 py-16 text-center text-muted-foreground">
         <h1 className="text-2xl font-semibold mb-4">Post not found</h1>
         <Link href="/" className="link">
           Go back home
@@ -61,7 +64,7 @@ export default function Page() {
 
   return (
     <article
-      className={`max-w-3xl mx-auto px-6 py-12 transition-opacity duration-1000 ${
+      className={`max-w-3xl mx-auto px-3 py-6 transition-opacity duration-1000 ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
     >
@@ -89,28 +92,32 @@ export default function Page() {
         </div>
       </header>
 
-      {post.image && (
-        <div className="relative w-full h-64 rounded-radius overflow-hidden mb-8">
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            style={{ objectFit: "cover" }}
-            sizes="(max-width: 768px) 100vw, 768px"
-            priority
-          />
+      <Container>
+
+        {post.image && (
+          <div className="relative w-full h-64 rounded-radius overflow-hidden mb-8">
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="(max-width: 768px) 100vw, 768px"
+              priority
+            />
+          </div>
+        )}
+
+        <div
+          className="prose prose-neutral dark:prose-invert max-w-none text-foreground">
+          <ReactMarkdown>{post.content ?? ""}</ReactMarkdown>
         </div>
-      )}
 
-      <div className="prose prose-neutral dark:prose-invert max-w-none text-foreground">
-        <ReactMarkdown>{post.content ?? ""}</ReactMarkdown>
-      </div>
-
-      <footer className="mt-12">
-        <Link href="/posts/preview" className="link">
-          ← Back to posts
-        </Link>
-      </footer>
+        <footer className="mt-12">
+          <Link href="/posts/preview" className="link">
+            ← Back to posts
+          </Link>
+        </footer>
+      </Container>
     </article>
   );
 }
