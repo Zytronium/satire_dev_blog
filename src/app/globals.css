@@ -5,7 +5,7 @@
 
 /* ---------- Design tokens (plain variables) ---------- */
 :root {
-    --font-geist-sans: "Electrolize", sans-serif;
+    --font-geist-sans: "Hack", "Electrolize", sans-serif;
     --font-satoshi: "Satoshi", var(--font-geist-sans), sans-serif;
 
     /* Light theme */
@@ -256,6 +256,14 @@
 @font-face {
     font-family: "Electrolize";
     src: url("/fonts/Electrolize-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Hack";
+    src: url("/fonts/Hack-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
