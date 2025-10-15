@@ -7,42 +7,31 @@
 :root {
     --font-geist-sans: "Hack", "Electrolize", sans-serif;
     --font-satoshi: "Satoshi", var(--font-geist-sans), sans-serif;
-
-    /* Light theme */
     --background: hsl(240, 32%, 88%);
     --foreground: hsl(250 30% 20%);
     --card: hsl(0 0% 100%);
     --card-foreground: hsl(250 30% 20%);
     --popover: hsl(0 0% 100%);
     --popover-foreground: hsl(250 30% 20%);
-
     --primary: hsl(250 60% 35%);
     --primary-foreground: hsl(0 0% 100%);
-
     --secondary: hsl(230 40% 92%);
     --secondary-foreground: hsl(250 40% 25%);
-
     --muted: hsl(230 40% 92%);
     --muted-foreground: hsl(250 20% 50%);
-
     --accent: hsl(180 70% 40%);
     --accent-foreground: hsl(0 0% 100%);
-
     --destructive: hsl(0 70% 45%);
     --destructive-foreground: hsl(0 0% 100%);
-
     --border: hsl(230 30% 85%);
     --input: hsl(230 30% 85%);
     --ring: hsl(250 60% 35%);
-
     --radius: 0.5rem;
-
-    --chart-1: hsl(250 60% 50%);   /* purple */
-    --chart-2: hsl(211, 70%, 45%); /* blue */
-    --chart-3: hsl(180 70% 40%);   /* teal */
-    --chart-4: hsl(290, 54%, 51%); /* magenta */
-    --chart-5: hsl(155, 72%, 46%); /* minty-green */
-
+    --chart-1: hsl(250 60% 50%);
+    --chart-2: hsl(211, 70%, 45%);
+    --chart-3: hsl(180 70% 40%);
+    --chart-4: hsl(290, 54%, 51%);
+    --chart-5: hsl(155, 72%, 46%);
     --transbg: color-mix(in hsl, var(--background) 66%, transparent);
 }
 
@@ -50,85 +39,137 @@
 .dark {
     --background: hsl(250 35% 12%);
     --foreground: hsl(0 0% 98%);
-
     --card: hsl(250 35% 15%);
     --card-foreground: hsl(0 0% 98%);
-
     --popover: hsl(250 35% 15%);
     --popover-foreground: hsl(0 0% 98%);
-
     --primary: hsl(250 70% 65%);
     --primary-foreground: hsl(250 35% 15%);
-
     --secondary: hsl(240 30% 25%);
     --secondary-foreground: hsl(0 0% 98%);
-
     --muted: hsl(240 30% 25%);
     --muted-foreground: hsl(250 30% 70%);
-
     --accent: hsl(180 70% 40%);
     --accent-foreground: hsl(0 0% 100%);
-
     --destructive: hsl(0 60% 40%);
     --destructive-foreground: hsl(0 0% 98%);
-
     --border: hsl(240 25% 25%);
     --input: hsl(240 25% 25%);
     --ring: hsl(250 70% 65%);
-
-    --chart-1: hsl(250, 84%, 58%); /* purple */
-    --chart-2: hsl(211, 73%, 51%); /* blue */
-    --chart-3: hsl(180, 69%, 49%); /* teal */
-    --chart-4: hsl(290, 65%, 55%); /* magenta */
-    --chart-5: hsl(155, 70%, 50%); /* minty-green */
-
+    --chart-1: hsl(250, 84%, 58%);
+    --chart-2: hsl(211, 73%, 51%);
+    --chart-3: hsl(180, 69%, 49%);
+    --chart-4: hsl(290, 65%, 55%);
+    --chart-5: hsl(155, 70%, 50%);
     --transbg: color-mix(in hsl, var(--background) 66%, transparent);
 }
 
 /* ---------- Utility mappings ---------- */
 @layer utilities {
-  .bg-background { background-color: var(--background); }
-  .text-foreground { color: var(--foreground); }
-  .bg-transbg {
+    .bg-background {
+        background-color: var(--background);
+    }
+
+    .text-foreground {
+        color: var(--foreground);
+    }
+
+    .bg-transbg {
         background-color: var(--transbg);
         backdrop-filter: blur(5px);
     }
 
-  .bg-card { background-color: var(--card); }
-  .text-card-foreground { color: var(--card-foreground); }
-
-  .bg-popover { background-color: var(--popover); }
-  .text-popover-foreground { color: var(--popover-foreground); }
-
-  .bg-primary { background-color: var(--primary); }
-  .text-primary-foreground { color: var(--primary-foreground); }
-
-  .bg-secondary { background-color: var(--secondary); }
-  .text-secondary-foreground { color: var(--secondary-foreground); }
-
-  .bg-muted { background-color: var(--muted); }
-  .text-muted-foreground { color: var(--muted-foreground); }
-
-  .bg-accent { background-color: var(--accent); }
-  .text-accent-foreground { color: var(--accent-foreground); }
-
-  .bg-destructive { background-color: var(--destructive); }
-  .text-destructive-foreground { color: var(--destructive-foreground); }
-
-  .border-border { border-color: var(--border); }
-  .bg-input { background-color: var(--input); }
-    .rounded-radius { border-radius: var(--radius); }
-
-    /* ring helper (simple) */
-    .ring-token {
-    box-shadow: 0 0 0 3px color-mix(in hsl, var(--ring) 16%, transparent);
+    .bg-card {
+        background-color: var(--card);
     }
 
-  .chart-1 { color: var(--chart-1); }
-  .chart-2 { color: var(--chart-2); }
-  .chart-3 { color: var(--chart-3); }
-  .chart-4 { color: var(--chart-4); }
-  .chart-5 { color: var(--chart-5); }
+    .text-card-foreground {
+        color: var(--card-foreground);
+    }
+
+    .bg-popover {
+        background-color: var(--popover);
+    }
+
+    .text-popover-foreground {
+        color: var(--popover-foreground);
+    }
+
+    .bg-primary {
+        background-color: var(--primary);
+    }
+
+    .text-primary-foreground {
+        color: var(--primary-foreground);
+    }
+
+    .bg-secondary {
+        background-color: var(--secondary);
+    }
+
+    .text-secondary-foreground {
+        color: var(--secondary-foreground);
+    }
+
+    .bg-muted {
+        background-color: var(--muted);
+    }
+
+    .text-muted-foreground {
+        color: var(--muted-foreground);
+    }
+
+    .bg-accent {
+        background-color: var(--accent);
+    }
+
+    .text-accent-foreground {
+        color: var(--accent-foreground);
+    }
+
+    .bg-destructive {
+        background-color: var(--destructive);
+    }
+
+    .text-destructive-foreground {
+        color: var(--destructive-foreground);
+    }
+
+    .border-border {
+        border-color: var(--border);
+    }
+
+    .bg-input {
+        background-color: var(--input);
+    }
+
+    .rounded-radius {
+        border-radius: var(--radius);
+    }
+
+    .ring-token {
+        box-shadow: 0 0 0 3px color-mix(in hsl, var(--ring) 16%, transparent);
+    }
+
+    .chart-1 {
+        color: var(--chart-1);
+    }
+
+    .chart-2 {
+        color: var(--chart-2);
+    }
+
+    .chart-3 {
+        color: var(--chart-3);
+    }
+
+    .chart-4 {
+        color: var(--chart-4);
+    }
+
+    .chart-5 {
+        color: var(--chart-5);
+    }
 
     .link {
         @apply text-purple-400 hover:underline visited:text-fuchsia-600;
@@ -137,47 +178,130 @@
 
 /* ---------- Base global styles ---------- */
 @layer base {
-    * { border-color: var(--border); }
-
+    /* safe global layout defaults */
     html, body {
-        @apply transition-colors duration-500;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
         color: var(--foreground);
         font-family: var(--font-satoshi);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        @apply transition-colors duration-500;
     }
-    /* Restore basic HTML element defaults */
+
+    /* Prevent flex/grid children from forcing wider than viewport */
+    *, *::before, *::after {
+        box-sizing: border-box;
+        min-width: 0;
+    }
+
+    /* general element defaults */
+    * {
+        border-color: var(--border);
+    }
+
     body {
         line-height: 1.5;
-        -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- Robust code block rules --- */
+    /*
+     - clamp to viewport (subtract small gutter so scrollbars and safe-area don't overflow)
+     - isolate so intrinsic width cannot propagate
+     - allow both scroll axes inside the pre container
+     - allow long tokens to scroll horizontally without expanding page
+    */
+    pre {
+        display: block;
+        width: 100%;
+        /* use viewport based clamp to guarantee not wider than screen */
+        max-width: calc(100vw - 3rem);
+        max-height: 50vh; /* vertical cap */
+        overflow: auto; /* both axes */
+        -webkit-overflow-scrolling: touch;
+        white-space: pre; /* no wrap so horizontal scroll used */
+        margin: 1em 0;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background: var(--muted);
+        color: var(--foreground);
+        border: 1px solid var(--border);
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        box-sizing: border-box;
+        contain: paint layout; /* isolate layout influence */
+        /* small safety: don't allow pre to be treated as table or inline-size target */
+        min-width: 0;
+    }
+
+    /* code inside pre must size to content but not force parent to grow */
+    pre code {
+        display: block;
+        width: max-content; /* allow horizontal scrolling when needed */
+        max-width: 100%;
+        box-sizing: border-box;
+        white-space: pre; /* preserve spacing */
+        overflow: visible;
+    }
+
+    @media (width <= 40rem) {
+        pre code {
+            font-size: small;
+        }
+    }
+
+    /* If your renderer wraps the <pre> in .highlight or .code-block add these */
+    .highlight, .code-block, .gatsby-highlight, .remark-code-container {
+        max-width: 100%;
+        overflow: hidden;
+        min-width: 0;
+    }
+
+    /* inline code */
+    code {
+        font-family: Hack, ui-monospace, SFMono-Regular, Menlo, monospace;
+        background: var(--muted);
+        color: var(--foreground);
+        border-radius: 3px;
+        padding: 0.125em;
+        border: 1px solid var(--muted);
     }
 
     /* Headings */
     h1 {
-        font-size: 2.25rem; /* text-4xl */
+        font-size: 2.25rem;
         line-height: 2.5rem;
         font-weight: 700;
     }
+
     h2 {
-        font-size: 1.875rem; /* text-3xl */
+        font-size: 1.875rem;
         line-height: 2.25rem;
         font-weight: 600;
     }
+
     h3 {
-        font-size: 1.5rem; /* text-2xl */
+        font-size: 1.5rem;
         line-height: 2rem;
         font-weight: 600;
     }
+
     h4 {
-        font-size: 1.25rem; /* text-xl */
+        font-size: 1.25rem;
         line-height: 1.75rem;
         font-weight: 600;
     }
+
     h5 {
-        font-size: 1.125rem; /* text-lg */
+        font-size: 1.125rem;
         line-height: 1.75rem;
         font-weight: 600;
     }
+
     h6 {
-        font-size: 1rem; /* text-base */
+        font-size: 1rem;
         line-height: 1.5rem;
         font-weight: 600;
     }
@@ -188,13 +312,10 @@
         color: var(--foreground);
     }
 
-    /* Paragraphs */
     p {
-        margin-top: 1em;
-        margin-bottom: 1em;
+        margin: 1em 0;
     }
 
-    /* Lists */
     ul, ol {
         list-style: revert;
         margin: 1em 0;
@@ -205,30 +326,12 @@
         margin: 0.25em 0;
     }
 
-    /* Links */
     a {
         color: inherit;
         text-decoration: underline;
         text-underline-offset: 0.2em;
     }
 
-    /* Code blocks */
-    code, pre {
-        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-        background: var(--muted);
-        color: var(--foreground);
-        border-radius: 3px;
-        padding: 0.125em;
-        border: 1px solid var(--muted);
-    }
-
-    pre {
-        padding: 1em;
-        border-radius: 0.5rem;
-        overflow-x: auto;
-    }
-
-    /* Tables */
     table {
         border-collapse: collapse;
         width: 100%;
@@ -241,9 +344,8 @@
         text-align: left;
     }
 
-    /* Blockquotes */
     blockquote {
-        font-style: italic ;
+        font-style: italic;
         border-left: 4px solid var(--muted-foreground);
         padding-left: 1em;
         background-color: var(--background);
@@ -253,6 +355,7 @@
     }
 }
 
+/* ---------- Fonts ---------- */
 @font-face {
     font-family: "Electrolize";
     src: url("/fonts/Electrolize-Regular.ttf") format("truetype");

@@ -49,6 +49,7 @@ export default function RootLayout({ children }) {
       <html lang="en" suppressHydrationWarning>
       <head>
         <title>console.blog("Fixed the Bug (with duct tape)");</title>
+
       </head>
       <body className="relative min-h-screen overflow-x-hidden">
       <ThemeProvider

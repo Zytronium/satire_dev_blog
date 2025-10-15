@@ -93,9 +93,9 @@ export function Lamphome({
         className="relative flex items-center justify-between w-full max-w-4xl h-auto py-3 px-3 [@media(min-width:768px)]:px-6 bg-white/80 dark:bg-neutral-950 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
       >
         {logoSrc && (
-          <div className="flex-shrink-0">
+          <Link className="flex-shrink-0" href={"/"}>
             <Image src={logoSrc} alt={logoAlt || "Logo"} width={28} height={28} className="cursor-pointer hover:scale-110 transition-transform duration-200" />
-          </div>
+          </Link>
         )}
 
         <nav className="hidden [@media(min-width:640px)]:flex items-center space-x-4 [@media(min-width:768px)]:space-x-6">

@@ -17,7 +17,7 @@ export default function GlowButton({
     <motion.button
       onClick={onClick}
       className={cn(
-        "relative overflow-hidden rounded-2xl px-6 py-3 font-medium text-white shadow-[0_0_15px_rgba(150,150,255,0.4)]",
+        "relative overflow-hidden rounded-2xl px-6 py-3 font-medium text-black shadow-[0_0_15px_rgba(150,150,255,0.4)]",
         "bg-[linear-gradient(135deg,#c0e0ff,#e0c0ff,#c0e0ff)] bg-[length:200%_200%]",
         "transition-transform duration-200 hover:scale-[1.025]",
         className

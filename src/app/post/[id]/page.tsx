@@ -11,6 +11,7 @@ export default function Page() {
   const { id } = useParams();
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
     async function loadPost() {
@@ -31,6 +32,14 @@ export default function Page() {
     if (id) loadPost();
   }, [id]);
 
+  // Trigger fade-out if title matches
+  useEffect(() => {
+    if (post?.title === "Let Me Be Clear") {
+      const timer = setTimeout(() => setFadeOut(true), 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [post]);
+
   if (loading)
     return (
       <div className="max-w-3xl mx-auto px-6 py-16 text-center text-muted-foreground">
@@ -50,7 +59,11 @@ export default function Page() {
   }
 
   return (
-    <article className="max-w-3xl mx-auto px-6 py-12">
+    <article
+      className={`max-w-3xl mx-auto px-6 py-12 transition-opacity duration-1000 ${
+        fadeOut ? "opacity-0" : "opacity-100"
+      }`}
+    >
       <header className="mb-8">
         <h1 className="text-3xl font-semibold mb-2 text-card-foreground">
           {post.title}
