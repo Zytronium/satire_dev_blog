@@ -2,7 +2,8 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
-/* ---------- Design tokens (H S L triplets for use with hsl(var(--...))) ---------- */
+
+/* ---------- Design tokens (plain variables) ---------- */
 :root {
     --font-geist-sans: "Electrolize", sans-serif;
     --font-satoshi: "Satoshi", var(--font-geist-sans), sans-serif;
@@ -41,6 +42,8 @@
     --chart-3: hsl(180 70% 40%);   /* teal */
     --chart-4: hsl(290, 54%, 51%); /* magenta */
     --chart-5: hsl(155, 72%, 46%); /* minty-green */
+
+    --transbg: color-mix(in hsl, var(--background) 66%, transparent);
 }
 
 /* Dark theme overrides */
@@ -78,53 +81,54 @@
     --chart-3: hsl(180, 69%, 49%); /* teal */
     --chart-4: hsl(290, 65%, 55%); /* magenta */
     --chart-5: hsl(155, 70%, 50%); /* minty-green */
+
+    --transbg: color-mix(in hsl, var(--background) 66%, transparent);
 }
 
+/* ---------- Utility mappings ---------- */
+@layer utilities {
+  .bg-background { background-color: var(--background); }
+  .text-foreground { color: var(--foreground); }
+  .bg-transbg {
+        background-color: var(--transbg);
+        backdrop-filter: blur(5px);
+    }
 
+  .bg-card { background-color: var(--card); }
+  .text-card-foreground { color: var(--card-foreground); }
 
-/* ---------- Utility mappings that use the CSS-first tokens ---------- */
-@layer utilities{
-    /* Background / foreground utilities */
-    .bg-background { background-color: hsl(var(--background)); }
-    .text-foreground { color: hsl(var(--foreground)); }
+  .bg-popover { background-color: var(--popover); }
+  .text-popover-foreground { color: var(--popover-foreground); }
 
-    .bg-card { background-color: hsl(var(--card)); }
-    .text-card-foreground { color: hsl(var(--card-foreground)); }
+  .bg-primary { background-color: var(--primary); }
+  .text-primary-foreground { color: var(--primary-foreground); }
 
-    .bg-popover { background-color: hsl(var(--popover)); }
-    .text-popover-foreground { color: hsl(var(--popover-foreground)); }
+  .bg-secondary { background-color: var(--secondary); }
+  .text-secondary-foreground { color: var(--secondary-foreground); }
 
-    .bg-primary { background-color: hsl(var(--primary)); }
-    .text-primary-foreground { color: hsl(var(--primary-foreground)); }
+  .bg-muted { background-color: var(--muted); }
+  .text-muted-foreground { color: var(--muted-foreground); }
 
-    .bg-secondary { background-color: hsl(var(--secondary)); }
-    .text-secondary-foreground { color: hsl(var(--secondary-foreground)); }
+  .bg-accent { background-color: var(--accent); }
+  .text-accent-foreground { color: var(--accent-foreground); }
 
-    .bg-muted { background-color: hsl(var(--muted)); }
-    .text-muted-foreground { color: hsl(var(--muted-foreground)); }
+  .bg-destructive { background-color: var(--destructive); }
+  .text-destructive-foreground { color: var(--destructive-foreground); }
 
-    .bg-accent { background-color: hsl(var(--accent)); }
-    .text-accent-foreground { color: hsl(var(--accent-foreground)); }
-
-    .bg-destructive { background-color: hsl(var(--destructive)); }
-    .text-destructive-foreground { color: hsl(var(--destructive-foreground)); }
-
-    /* Small utility wrappers */
-    .border-border { border-color: hsl(var(--border)); }
-    .bg-input { background-color: hsl(var(--input)); }
+  .border-border { border-color: var(--border); }
+  .bg-input { background-color: var(--input); }
     .rounded-radius { border-radius: var(--radius); }
 
     /* ring helper (simple) */
     .ring-token {
-        box-shadow: 0 0 0 3px color-mix(in hsl, hsl(var(--ring)) 16%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in hsl, var(--ring) 16%, transparent);
     }
 
-    /* chart color helpers */
-    .chart-1 { color: hsl(var(--chart-1)); }
-    .chart-2 { color: hsl(var(--chart-2)); }
-    .chart-3 { color: hsl(var(--chart-3)); }
-    .chart-4 { color: hsl(var(--chart-4)); }
-    .chart-5 { color: hsl(var(--chart-5)); }
+  .chart-1 { color: var(--chart-1); }
+  .chart-2 { color: var(--chart-2); }
+  .chart-3 { color: var(--chart-3); }
+  .chart-4 { color: var(--chart-4); }
+  .chart-5 { color: var(--chart-5); }
 
     .link {
         @apply text-purple-400 hover:underline visited:text-fuchsia-600;
@@ -132,15 +136,120 @@
 }
 
 /* ---------- Base global styles ---------- */
-@layer base{
-    /* apply the border token to all default borders (same effect as original) */
-    * { border-color: hsl(var(--border)); }
+@layer base {
+    * { border-color: var(--border); }
 
     html, body {
         @apply transition-colors duration-500;
-        background-color: hsl(var(--background));
-        color: hsl(var(--foreground));
+        color: var(--foreground);
         font-family: var(--font-satoshi);
+    }
+    /* Restore basic HTML element defaults */
+    body {
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* Headings */
+    h1 {
+        font-size: 2.25rem; /* text-4xl */
+        line-height: 2.5rem;
+        font-weight: 700;
+    }
+    h2 {
+        font-size: 1.875rem; /* text-3xl */
+        line-height: 2.25rem;
+        font-weight: 600;
+    }
+    h3 {
+        font-size: 1.5rem; /* text-2xl */
+        line-height: 2rem;
+        font-weight: 600;
+    }
+    h4 {
+        font-size: 1.25rem; /* text-xl */
+        line-height: 1.75rem;
+        font-weight: 600;
+    }
+    h5 {
+        font-size: 1.125rem; /* text-lg */
+        line-height: 1.75rem;
+        font-weight: 600;
+    }
+    h6 {
+        font-size: 1rem; /* text-base */
+        line-height: 1.5rem;
+        font-weight: 600;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+        color: var(--foreground);
+    }
+
+    /* Paragraphs */
+    p {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    /* Lists */
+    ul, ol {
+        list-style: revert;
+        margin: 1em 0;
+        padding-left: 2em;
+    }
+
+    li {
+        margin: 0.25em 0;
+    }
+
+    /* Links */
+    a {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+    }
+
+    /* Code blocks */
+    code, pre {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        background: var(--muted);
+        color: var(--foreground);
+        border-radius: 3px;
+        padding: 0.125em;
+        border: 1px solid var(--muted);
+    }
+
+    pre {
+        padding: 1em;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+    }
+
+    /* Tables */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 1em 0;
+    }
+
+    th, td {
+        border: 1px solid var(--border);
+        padding: 0.5em 0.75em;
+        text-align: left;
+    }
+
+    /* Blockquotes */
+    blockquote {
+        font-style: italic ;
+        border-left: 4px solid var(--muted-foreground);
+        padding-left: 1em;
+        background-color: var(--background);
+        color: var(--muted-foreground);
+        margin: 1em 0;
+        border-radius: 0.25em;
     }
 }
 
