@@ -25,10 +25,22 @@ function contentTypeFromExt(name: string) {
   }
 }
 
-export async function GET(request: NextRequest, { params }: { params: { slug: string; file: string[] } }) {
+export async function GET(request: NextRequest, ctx: any) {
   try {
-    const { slug, file } = params;
-    if (!slug || !file || file.length === 0) return new Response("Not found", { status: 404 });
+    const params = ctx?.params ?? {};
+    const slug = String(params.slug ?? "");
+    const rawFile = params.file;
+
+    // normalize the catch-all to an array
+    const file = Array.isArray(rawFile)
+      ? rawFile
+      : typeof rawFile === "string"
+        ? [rawFile]
+        : [];
+
+    if (!slug || file.length === 0) {
+      return new Response("Not found", { status: 404 });
+    }
 
     // Reconstruct path (preserves nested paths like images/foo/bar.png)
     const relPath = file.join("/");
@@ -37,7 +49,9 @@ export async function GET(request: NextRequest, { params }: { params: { slug: st
     // Security: ensure the resolved path is inside the posts dir for that slug
     const resolved = path.resolve(filePath);
     const allowedBase = path.resolve(path.join(POSTS_DIR, slug));
-    if (!resolved.startsWith(allowedBase)) {
+
+    // ensure `resolved` is inside allowedBase
+    if (!(resolved === allowedBase || resolved.startsWith(allowedBase + path.sep))) {
       return new Response("Forbidden", { status: 403 });
     }
 
@@ -45,6 +59,9 @@ export async function GET(request: NextRequest, { params }: { params: { slug: st
     const ctype = contentTypeFromExt(relPath);
     return new Response(data, { headers: { "Content-Type": ctype } });
   } catch (err) {
+    // useful for debugging; remove in production if desired
+    // eslint-disable-next-line no-console
+    console.error("POSTS image fetch error:", err);
     return new Response("Not found", { status: 404 });
   }
 }
