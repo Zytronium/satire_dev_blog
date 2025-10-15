@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Post } from "@/components/PostGrid";
 
 export default function Page() {
-  const { id } = useParams();
+  const { slug } = useParams(); // changed from id → slug
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
@@ -19,7 +19,8 @@ export default function Page() {
         const res = await fetch("/api/posts");
         if (!res.ok) throw new Error("Failed to fetch posts");
         const data: Post[] = await res.json();
-        const found = data.find((p) => p.id.toString() === id);
+        // match by slug instead of id
+        const found = data.find((p) => p.slug === slug);
         setPost(found || null);
       } catch (err) {
         console.error(err);
@@ -29,8 +30,8 @@ export default function Page() {
       }
     }
 
-    if (id) loadPost();
-  }, [id]);
+    if (slug) loadPost();
+  }, [slug]);
 
   // Trigger fade-out if title matches
   useEffect(() => {

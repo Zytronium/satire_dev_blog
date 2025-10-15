@@ -7,6 +7,7 @@ import Flexbox from "./Flexbox";
 
 export type Post = {
   id: string | number;
+  slug: string;
   title: string;
   excerpt?: string;
   content?: string;
@@ -50,7 +51,7 @@ function PostCard({ post }: { post: Post }) {
   const hasImage = !!post.image;
   return (
     <div className="flex flex-col h-full">
-      <Link href={post.id ? `/post/${post.id}` : "#"} className="group no-underline">
+      <Link href={post.slug ? `/post/${post.slug}` : "#"} className="group no-underline">
         <div className="relative w-full h-44 bg-input">
           {hasImage ? (
             <Image
