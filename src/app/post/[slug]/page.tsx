@@ -64,7 +64,7 @@ export default function Page() {
 
   return (
     <article
-      className={`max-w-3xl mx-auto px-3 py-6 transition-opacity duration-1000 ${
+      className={`max-w-3xl min-w-[60vw] mx-auto px-3 py-6 transition-opacity duration-1000 ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
     >
@@ -93,7 +93,6 @@ export default function Page() {
       </header>
 
       <Container>
-
         {post.image && (
           <div className="relative w-full h-64 rounded-radius overflow-hidden mb-8">
             <Image

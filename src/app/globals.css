@@ -332,6 +332,10 @@
         text-underline-offset: 0.2em;
     }
 
+    nav a {
+        text-decoration: none;
+    }
+
     table {
         border-collapse: collapse;
         width: 100%;
