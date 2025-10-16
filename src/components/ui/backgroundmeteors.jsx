@@ -28,7 +28,7 @@ export default function BackgroundMeteors({
 
   useEffect(() => {
     const generateBeams = () => {
-      const count = Math.floor(Math.random() * 2) + 3;
+      const count = Math.floor(Math.random() * 3) + 3;
       const xPositions = generateSafeGridPositions(count);
 
       const newBeams = xPositions.map((x) => ({
