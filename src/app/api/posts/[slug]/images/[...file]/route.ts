@@ -27,7 +27,7 @@ function contentTypeFromExt(name: string) {
 
 export async function GET(request: NextRequest, ctx: any) {
   try {
-    const params = ctx?.params ?? {};
+    const params = await ctx?.params ?? {};
     const slug = String(params.slug ?? "");
     const rawFile = params.file;
 
