@@ -19,8 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       description:
         "As it turns out, the bug was caused by a real life insect crawling around inside the computer tower, so I duct taped it to the inner walls where it can't create new electrical pathways inside the hardware anymore.",
     },
-    { name: "Browse Posts", path: `/posts`, title: "Blog Posts", description: "This page is currently under construction" },
-    { name: "Blog Posts Preview", path: `/posts/preview`, title: "Blog Posts", description: "" },
+    { name: "Browse Posts", path: `/posts`, title: "Blog Posts", description: "" },
     { name: "About", path: `/about`, title: "About", description: "This page is currently under construction" },
     { name: "Admin Panel", path: `/adminpanel`, title: "AdminPanel", description: "Hey! You're not supposed to be here!" },
   ];
