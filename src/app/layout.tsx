@@ -7,6 +7,7 @@ import { Lamphome } from "@/components/ui/lamphome";
 import BackgroundMeteors from "@/components/ui/backgroundmeteors";
 import "./globals.css";
 import Flexbox from "@/components/Flexbox";
+import { Analytics } from "@vercel/analytics/next";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -89,6 +90,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </Flexbox>
         </Lamphome>
       </ThemeProvider>
+      {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
       </html>
   );
