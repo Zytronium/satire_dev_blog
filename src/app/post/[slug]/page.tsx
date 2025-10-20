@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const url = `https://satire.zytronium.dev/post/${encodeURIComponent(slug)}`;
 
   return {
-    title: post.title,
+    title: `Console.blog("${post.title}");`,
     description: post.excerpt,
     keywords,
     alternates: {
