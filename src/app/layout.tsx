@@ -29,14 +29,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const lamphomeTitle = lamphomeMeta?.title ?? "";
 
   useEffect(() => {
+    const postMatch = pathname?.match(/^\/post\/([^/]+)\/?$/);
     // Home page: keep the original default title
     if (pathname === "/") {
       document.title = 'console.blog("Fixed the Bug (with duct tape)");';
       return;
     }
+    // Post pages: let the individual post control title/meta via its own Head
+    if (postMatch) {
+      return;
+    }
 
     // Post page: /post/[slug] -> set to the post title (fetch posts API)
-    const postMatch = pathname?.match(/^\/post\/([^/]+)\/?$/);
     if (postMatch) {
       const slug = decodeURIComponent(postMatch[1]);
       (async () => {

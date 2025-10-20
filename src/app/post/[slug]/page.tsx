@@ -1,59 +1,66 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
-import ReactMarkdown from "react-markdown";
-import Image from "next/image";
+import React from "react";
+import { Metadata } from "next";
 import Link from "next/link";
 import { Post } from "@/components/PostGrid";
-import Container from "@/components/Container";
+import PostContent from "./PostContent";
 
-export default function Page() {
-  const { slug } = useParams(); // changed from id → slug
-  const [post, setPost] = useState<Post | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [fadeOut, setFadeOut] = useState(false);
+async function getPost(slug: string): Promise<Post | null> {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/posts`, {
+      cache: 'no-store'
+    });
+    if (!res.ok) throw new Error("Failed to fetch posts");
+    const data: Post[] = await res.json();
+    return data.find((p) => p.slug === slug) || null;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+}
 
-  useEffect(() => {
-    async function loadPost() {
-      try {
-        const res = await fetch("/api/posts");
-        if (!res.ok) throw new Error("Failed to fetch posts");
-        const data: Post[] = await res.json();
-        // match by slug instead of id
-        const found = data.find((p) => p.slug === slug);
-        setPost(found || null);
-      } catch (err) {
-        console.error(err);
-        setPost(null);
-      } finally {
-        setLoading(false);
-      }
-    }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
 
-    if (slug) loadPost();
-  }, [slug]);
+  if (!post) {
+    return {
+      title: "Post Not Found",
+    };
+  }
 
-  // Trigger fade-out if title matches
-  useEffect(() => {
-    if (post?.title === "Let Me Be Clear") {
-      const timer = setTimeout(() => setFadeOut(true), 1500);
-      return () => clearTimeout(timer);
-    }
-  }, [post]);
+  const keywords = [...(post.tags ?? []), "satire", "dev blog"].join(", ");
+  const url = `https://satire.zytronium.dev/post/${encodeURIComponent(slug)}`;
 
-  if (loading)
-    return (
-      <div
-        className="max-w-3xl mx-auto px-6 py-16 text-center text-muted-foreground">
-        <p>Loading post...</p>
-      </div>
-    );
+  return {
+    title: post.title,
+    description: post.excerpt,
+    keywords,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      url,
+      images: post.image ? [post.image] : [],
+    },
+    twitter: {
+      card: post.image ? "summary_large_image" : "summary",
+      title: post.title,
+      description: post.excerpt,
+      images: post.image ? [post.image] : [],
+    },
+  };
+}
+
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = await getPost(slug);
 
   if (!post) {
     return (
-      <div
-        className="max-w-3xl mx-auto px-6 py-16 text-center text-muted-foreground">
+      <div className="max-w-3xl mx-auto px-6 py-16 text-center text-muted-foreground">
         <h1 className="text-2xl font-semibold mb-4">Post not found</h1>
         <Link href="/" className="link">
           Go back home
@@ -62,63 +69,7 @@ export default function Page() {
     );
   }
 
-  return (
-    <article
-      className={`max-w-3xl min-w-[60vw] mx-auto px-3 py-6 transition-opacity duration-1000 ${
-        fadeOut ? "opacity-0" : "opacity-100"
-      }`}
-    >
-      <header className="mb-8">
-        <h1 className="text-3xl font-semibold mb-2 text-card-foreground">
-          {post.title}
-        </h1>
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          {post.date && <time dateTime={post.date}>{formatDate(post.date)}</time>}
-          {post.tags?.length ? (
-            <>
-              <span>•</span>
-              <div className="flex gap-2 flex-wrap">
-                {post.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="text-xs px-2 py-1 rounded-radius bg-popover text-popover-foreground border border-border"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </>
-          ) : null}
-        </div>
-      </header>
-
-      <Container>
-        {post.image && (
-          <div className="relative w-full h-64 rounded-radius overflow-hidden mb-8">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              style={{ objectFit: "cover" }}
-              sizes="(max-width: 768px) 100vw, 768px"
-              priority
-            />
-          </div>
-        )}
-
-        <div
-          className="prose prose-neutral dark:prose-invert max-w-none text-foreground">
-          <ReactMarkdown>{post.content ?? ""}</ReactMarkdown>
-        </div>
-
-        <footer className="mt-12">
-          <Link href="/posts" className="link">
-            ← Back to posts
-          </Link>
-        </footer>
-      </Container>
-    </article>
-  );
+  return <PostContent post={post} slug={slug} />;
 }
 
 function formatDate(d: string) {
