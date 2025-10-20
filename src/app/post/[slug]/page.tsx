@@ -125,6 +125,7 @@ function formatDate(d: string) {
   try {
     const dt = new Date(d);
     if (Number.isNaN(dt.getTime())) return d;
+    dt.setUTCHours(6);
     return dt.toLocaleDateString(undefined, {
       year: "numeric",
       month: "short",
