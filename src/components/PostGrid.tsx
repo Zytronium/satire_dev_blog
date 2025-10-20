@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Flexbox from "./Flexbox";
 
 export type Post = {
   id: string | number;

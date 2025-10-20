@@ -112,7 +112,7 @@ export default function Page() {
         </div>
 
         <footer className="mt-12">
-          <Link href="/posts/preview" className="link">
+          <Link href="/posts" className="link">
             ← Back to posts
           </Link>
         </footer>
