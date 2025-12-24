@@ -9,7 +9,7 @@ remember what I was doing. My mind just went completely blank as for what I was
 previously doing. I just blanked out. I couldn't remember for the life of me what
 I was doing before I started doomscrolling. I seriously have no clue what I was
 trying to do. I don't even remember what I was looking at on Reddit, let alone
-what I was attempting to program into my website. I can't even as my AI assistant
+what I was attempting to program into my website. I can't even ask my AI assistant
 what I was doing because I didn't take notes on what I had planned, and since I 
 use Linux, Copilot wasn't there to save the day with all the information it got
 from spying on me before I started doomscrolling.
