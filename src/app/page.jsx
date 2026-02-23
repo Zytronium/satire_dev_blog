@@ -15,7 +15,7 @@ export default function Home() {
   }
 
   return (
-      <div className="mt-12">
+      <div className="mt-6">
         <div className="mt-6 flex flex-col items-center gap-4">
           <GlowButton onClick={() => window.location.href = "/posts"} >Browse Posts</GlowButton>
         </div>

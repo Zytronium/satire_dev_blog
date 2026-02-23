@@ -18,10 +18,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       path: `/`,
       title: '<h1>Console.blog("Satire Dev Blog");</h1>',
       description:
-        "Zytronium's personal satire dev blog, where satire stories and articles are posted.",
+        "Welcome to Zytronium's personal satire dev blog, where satire tech-related stories and articles are posted.",
     },
     { name: "Browse Posts", path: `/posts`, title: "Blog Posts", description: "" },
-    { name: "About", path: `/about`, title: "About", description: "This page is currently under construction" },
+    { name: "About", path: `/about`, title: "About", description: "About this website" },
     { name: "Admin Panel", path: `/adminpanel`, title: "AdminPanel", description: "Hey! You're not supposed to be here!" },
   ];
 
