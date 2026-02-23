@@ -16,9 +16,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     {
       name: "Home",
       path: `/`,
-      title: '<h1>Console.blog("Fixed the Bug (with duct tape)");</h1>',
+      title: '<h1>Console.blog("Satire Dev Blog");</h1>',
       description:
-        "As it turns out, the bug was caused by a real life insect crawling around inside the computer tower, so I duct taped it to the inner walls where it can't create new electrical pathways inside the hardware anymore.",
+        "Zytronium's personal satire dev blog, where satire stories and articles are posted.",
     },
     { name: "Browse Posts", path: `/posts`, title: "Blog Posts", description: "" },
     { name: "About", path: `/about`, title: "About", description: "This page is currently under construction" },
@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     const postMatch = pathname?.match(/^\/post\/([^/]+)\/?$/);
     // Home page: keep the original default title
     if (pathname === "/") {
-      document.title = 'console.blog("Fixed the Bug (with duct tape)");';
+      document.title = 'Console.blog("Satire Dev Blog");';
       return;
     }
     // Post pages: let the individual post control title/meta via its own Head
