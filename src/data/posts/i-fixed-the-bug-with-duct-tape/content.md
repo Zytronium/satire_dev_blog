@@ -1,10 +1,10 @@
 > Notice: This post was updated on February 24, 2026. The update completely
 rewrites the post from scratch, as the previous iteration contained too much
 AI-generated content. It was meant as a quick placeholder for my first
-article on this website, but I can't keep it up anymore, claiming I wrote it
-without a disclosure of AI usage, which would ruin the article. Furthermore,
-AI-generated content is obvious and generally not very funny. Now, please
-enjoy this totally real cover letter I wrote recently!
+article on this website, but I can't keep it up anymore implying I wrote it
+without a disclosure of AI usage. Furthermore, AI-generated content is obvious 
+and generally not very funny. Now, please enjoy this totally real cover letter 
+I wrote recently!
 
 Dear Hiring Manager,
 
