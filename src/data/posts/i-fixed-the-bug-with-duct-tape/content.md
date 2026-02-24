@@ -1,47 +1,38 @@
-Every developer eventually encounters **The Bug**—the one that resists all logic, mocks your tests, and laughs in the face of Stack Overflow copy-paste wisdom.
+> Notice: This post was updated on February 24, 2026. The update completely
+rewrites the post from scratch, as the previous iteration contained too much
+AI-generated content. It was meant as a quick placeholder for my first
+article on this website, but I can't keep it up anymore, claiming I wrote it
+without a disclosure of AI usage, which would ruin the article. Furthermore,
+AI-generated content is obvious and generally not very funny. Now, please
+enjoy this totally real cover letter I wrote recently!
 
-But I wasn’t ready for this one.
+Dear Hiring Manager,
 
----
+It is my pleasure to be applying for the Senior Bug Fixer position at your 
+company. Let's dispose with the usual cover letter best practices; I have
+a story that will show my skill and dedication so much, you'll have no choice
+but to hire me when you're done reading.
 
-## Act I: The Mysterious Intermittent Crash
+It all started when I was working on a new program that helps people with ADHD
+focus and work free of distraction, when suddenly, out of nowhere, the program
+started to malfunction. Instead of keeping me away from distractions, when I
+got distracted, it actually distracted me from distraction with more distraction.
+It then proceeded to take control of my speakers and yell mean things at me.
+After I got over the insults, I began tracking down the bug. After just a few 
+minutes of investigation, I discovered a small bug crawling around in my 
+computer tower, creating new electrical pathways on the motherboard as it
+crawled around. I thought back to this one TV commercial I saw about Duct Tape
+being able to fix anything. I even used it to fix my family issues once by... 
+well, you get the idea. So anyway, I figured if Duct Tape can fix my annoying
+cousin's mouth, it can fix this bug too. So I Duct Taped the bug to the inner
+walls of the computer so it couldn't mess around with the hardware anymore, and
+viola, the program started working perfectly again, and my ego began to slowly
+heal!
 
-It started innocently enough: our build server crashed every time Jenkins blinked. Logs showed *“electrical anomaly in CPU core 2.”*  
-My first thought: *“Oh cool, new undocumented Node.js feature.”*
+If this doesn't speak to the brilliance of my bug fixing abilities, I don't
+know what will. You're welcome in advance for taking the time to apply, I look
+forward to being accepted into the position by next week.
 
-I replaced the PSU. Swapped the RAM. Reseated the CPU like a priest performing an exorcism. Nothing.
-
-Then I heard it.
-
-**Buzzing.**  
-Inside the tower.
-
----
-
-## Act II: The Discovery
-
-I opened the case and found a literal, biological **bug** lounging between the capacitors like it owned the place.  
-A small cockroach. Model 1.0, open source, zero documentation.
-
-Every time it moved, it shorted two traces and rebooted the server. I realized I’d spent 12 hours debugging C code when I really needed pest control.
-
----
-
-## Act III: The Fix
-
-Being a developer, I did the obvious:  
-I **duct-taped the insect to the case wall.**
-
-No more crashes. The system booted perfectly. Performance metrics improved. I added a new comment to the repo:
-
-```js
-// fixed hardware bug with duct tape
-```
-
----
-
-## Epilogue
-
-Management congratulated me for “innovative hardware stabilization techniques.”  
-They promoted the roach to “Junior QA Engineer.”  
-I still leave a roll of duct tape next to the server, just in case the next bug tries to unionize.
+P.S. I figured I'd start working early to prove my eagerness, so I let myself in
+to your bug reports database; issue #147 on your closed-source program is caused 
+by a missing semicolon on line 342 of main.c. 
