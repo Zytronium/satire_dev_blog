@@ -34,7 +34,7 @@ Claus do.
 ## Number 2: FBI: Most Wanted
 Everybody knows the FBI is most wanted. That's why they watch FBI: Most Wanted.
 It's one of the best shows of all time according to the FBI's own watchlist.
-IF the FBI is watching FBI: Most Wanted, then the FBI is watching the FBI. 
+If the FBI is watching FBI: Most Wanted, then the FBI is watching the FBI. 
 Whoever the FBI is watching is wanted by the FBI. If the FBI is watching
 FBI: Most Wanted, then the FBI must be the FBI's most wanted. The show isn't
 just about the FBI, however. It's also about the FBI's most wanted people. 
