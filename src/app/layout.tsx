@@ -80,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Lamphome
           title={lamphomeTitle}
             description={lamphomeMeta?.description}
-          logoSrc="/favicon.ico"
+          logoSrc="/logo.svg"
           logoAlt="console.blog() logo"
           navItems={[
             { href: "/", label: "Home" },
