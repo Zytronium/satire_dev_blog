@@ -154,7 +154,7 @@ export default function PostContent({ post, slug, }: { post: Post; slug: string;
 
       <article
         className={[
-          "max-w-3xl min-w-[60vw] mx-auto px-3 py-6 transition-opacity duration-1000",
+          "max-w-3xl w-full md:min-w-[60vw] mx-auto px-3 py-6 transition-opacity duration-1000",
           isMalwarePost ? glitchClass : "",
           fadeOut ? "opacity-0" : "opacity-100",
         ]
@@ -201,7 +201,7 @@ export default function PostContent({ post, slug, }: { post: Post; slug: string;
             </div>
           )}
 
-          <div className="prose prose-neutral dark:prose-invert max-w-none text-foreground">
+          <div className="prose prose-neutral dark:prose-invert max-w-none text-foreground break-words">
             <ReactMarkdown>{post.content ?? ""}</ReactMarkdown>
           </div>
 
