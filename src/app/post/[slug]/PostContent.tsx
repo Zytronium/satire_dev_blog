@@ -76,7 +76,7 @@ const POPUP_TRIGGERS: Array<{ threshold: number } & PopupData> = [
     threshold: 0.78,
     title: "⚠ CRITICAL INFECTION",
     message:
-      "You are now 78% infected with malicious AI. Scroll speed has been reduced by malware.exe. Please insert a floppy disk to continue.",
+      "You are now infected with the link. Please insert a floppy disk with a Linux ISO gain your freedom before it's too late.",
     buttons: ["I don't have a floppy disk", "OK"],
   },
 ];
