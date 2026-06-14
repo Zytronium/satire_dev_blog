@@ -52,6 +52,7 @@ function MalwarePopup({
 // Config
 
 const SUS_SLUG = "i-clicked-the-worlds-most-suspicious-link-in-existence";
+const RICKROLL_SLUG = "for-the-love-of-god-please-do-not-open-this-post";
 
 /** scroll progress thresholds → popup content */
 const POPUP_TRIGGERS: Array<{ threshold: number } & PopupData> = [
@@ -94,11 +95,13 @@ export default function PostContent({ post, slug, }: { post: Post; slug: string;
   const [fadeOut, setFadeOut] = useState(false);
   const [glitchClass, setGlitchClass] = useState("");
   const [activePopups, setActivePopups] = useState<PopupData[]>([]);
+  const [rickrollActive, setRickrollActive] = useState(false);
   const triggeredPopups = useRef(new Set<number>());
 
   const isMalwarePost = slug === SUS_SLUG;
+  const isRickrollPost = slug === RICKROLL_SLUG;
 
-    // Trigger fade-out for "Let Me Be Clear" article
+  // Trigger fade-out for "Let Me Be Clear" article
   useEffect(() => {
     if (post?.title === "Let Me Be Clear") {
       const timer = setTimeout(() => setFadeOut(true), 1500);
@@ -141,6 +144,18 @@ export default function PostContent({ post, slug, }: { post: Post; slug: string;
     setActivePopups((prev) => prev.filter((p) => p.id !== id));
   }, []);
 
+  const triggerRickroll = useCallback(() => {
+    setRickrollActive(true);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (rickrollActive) {
+        setRickrollActive(false);
+      }
+    };
+  }, [rickrollActive]);
+
   return (
     <>
       {/* Malware popup stack: rendered outside the article so glitch doesn't affect them */}
@@ -150,6 +165,18 @@ export default function PostContent({ post, slug, }: { post: Post; slug: string;
             <MalwarePopup key={popup.id} popup={popup} onDismiss={dismissPopup} />
           ))}
         </div>
+      )}
+
+      {/* Fullscreen rickroll */}
+      {rickrollActive && (
+          <div className="fixed inset-0 z-[9999] bg-black">
+            <video
+                autoPlay
+                loop
+                className="w-full h-full object-cover"
+                src="/roll.mp4"
+            />
+          </div>
       )}
 
       <article
@@ -204,6 +231,17 @@ export default function PostContent({ post, slug, }: { post: Post; slug: string;
           <div className="prose prose-neutral dark:prose-invert max-w-none text-foreground break-words">
             <ReactMarkdown>{post.content ?? ""}</ReactMarkdown>
           </div>
+
+          {isRickrollPost && (
+              <div className="mt-4">
+                <button
+                    onClick={triggerRickroll}
+                    className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-radius transition-colors cursor-pointer"
+                >
+                  Undo
+                </button>
+              </div>
+          )}
 
           <footer className="mt-12">
             <Link href="/posts" className="link">
