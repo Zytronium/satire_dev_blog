@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import Image from "next/image";
 import Link from "next/link";
 import { Post } from "@/components/PostGrid";
@@ -231,7 +232,9 @@ export default function PostContent({ post, slug, }: { post: Post; slug: string;
           )}
 
           <div className="prose prose-neutral dark:prose-invert max-w-none text-foreground break-words">
-            <ReactMarkdown>{post.content ?? ""}</ReactMarkdown>
+  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+    {post.content ?? ""}
+  </ReactMarkdown>
           </div>
 
           {isBsodPost && (
