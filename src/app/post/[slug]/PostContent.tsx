@@ -53,6 +53,7 @@ function MalwarePopup({
 
 const SUS_SLUG = "i-clicked-the-worlds-most-suspicious-link-in-existence";
 const RICKROLL_SLUG = "for-the-love-of-god-please-do-not-open-this-post";
+const BSOD_SLUG = "the-blue-screen-of-death-claimed-my-car-heres-why-i-deserve-a-new-one";
 
 /** scroll progress thresholds → popup content */
 const POPUP_TRIGGERS: Array<{ threshold: number } & PopupData> = [
@@ -100,6 +101,7 @@ export default function PostContent({ post, slug, }: { post: Post; slug: string;
 
   const isMalwarePost = slug === SUS_SLUG;
   const isRickrollPost = slug === RICKROLL_SLUG;
+  const isBsodPost = slug === BSOD_SLUG;
 
   // Trigger fade-out for "Let Me Be Clear" article
   useEffect(() => {
@@ -231,6 +233,17 @@ export default function PostContent({ post, slug, }: { post: Post; slug: string;
           <div className="prose prose-neutral dark:prose-invert max-w-none text-foreground break-words">
             <ReactMarkdown>{post.content ?? ""}</ReactMarkdown>
           </div>
+
+          {isBsodPost && (
+            <div className="mt-8 flex justify-center">
+              <button
+                onClick={triggerRickroll}
+                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-radius transition-colors cursor-pointer"
+              >
+                Donate Car
+              </button>
+            </div>
+          )}
 
           {isRickrollPost && (
               <div className="mt-4">
