@@ -232,9 +232,9 @@ export default function PostContent({ post, slug, }: { post: Post; slug: string;
           )}
 
           <div className="prose prose-neutral dark:prose-invert max-w-none text-foreground break-words">
-  <ReactMarkdown remarkPlugins={[remarkGfm]}>
-    {post.content ?? ""}
-  </ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {post.content ?? ""}
+            </ReactMarkdown>
           </div>
 
           {isBsodPost && (
